@@ -93,7 +93,7 @@ visualizing our catalog.
 
 Being an open-source project, Infrastructure as Catalog (InCa) thrives on community contributions. Whether you're
 enhancing the existing FacetsCore implementation, introducing a new flavor, improving documentation, or reporting bugs,
-your input is invaluable. Dive into our [./GUIDELINE.md](./GUIDELINE.md) for guidelines on how to be a part of this revolutionary
+your input is invaluable. Dive into our [GUIDELINES.md](GUIDELINES.md) for guidelines on how to be a part of this
 project.
 
 By documenting the architecture and promoting platform engineering, Infrastructure as Catalog (InCa) fosters
