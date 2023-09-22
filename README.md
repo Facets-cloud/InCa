@@ -49,7 +49,8 @@ infrastructure using code. However, it's not without its challenges:
 **InCa** offers a solution to these challenges by abstracting the complexities and providing a more structured, modular,
 and intuitive approach to defining infrastructure.
 
-## Design (Explanation)
+## Design (Explanation) 
+[This will get updated constantly]
 
 The essence of **InCa** revolves around two primary constructs:
 
