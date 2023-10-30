@@ -8,7 +8,7 @@ Refer to the [discussion on GitHub](https://github.com/Facets-cloud/InCa/discuss
 
 ### Definition
 
-An Infrastructure Catalog describes the high level architecture of a software. It accomplishes this by describing the building blocks and their inter-dependencies with each other. The language to describe the catalog is what InCa aims to provide. The information in the catalog must be sufficient to manifest a functional deployment of the software.
+An Infrastructure Catalog describes the architecture of a software. It accomplishes this by describing the building blocks and their inter-dependencies with each other. The language to describe the catalog is what InCa aims to provide. The information in the catalog must be sufficient to manifest a functional deployment of the software.
 
 ### Rationale
 
@@ -35,7 +35,7 @@ The building blocks of an Infrastructure Catalog must clearly capture and descri
 
 ### Example
 
-In the catalog discussed earlier, the orders-frontend application would be one of the Intents. It would state that it is named "orders-frontend". It would specify the runtime it uses, health check endpoint etc. It would provide the port it exposes for other Intents to consume. It would also state it depends on the Intent called "orders-backend".
+In the catalog discussed earlier, the "orders-database" would be one of the Intents. It would state that it is named "orders-database". It would specify the type of database (e.g., MySQL), version, configuration settings, and any initialization scripts required. It would also provide the connection details that other Intents, such as "orders-backend", need to interact with it.
 
 ---
 
@@ -43,15 +43,15 @@ In the catalog discussed earlier, the orders-frontend application would be one o
 
 ### Definition
 
-Just like variables in programming languages, Intents are typed. An Intent type defines how an Intent of that type can be specified aka it's schema.
+An Intent Type provides a clear and detailed structure for describing a specific intent in an Infrastructure Catalog. It must be precise and comprehensive, ensuring that a user has all the necessary information to replicate the architecture independently.
 
 ### Rationale
 
-InCa must be a "Typed" specification to ensure that consumers of a Catalog can interact with it programmatically. Say an IaC project should be able to consume a catalog and manifest it as IaC.
+Intent Types are vital for maintaining interoperability across various tools and systems, ensuring that each component in the Infrastructure Catalog is described in a standardized and predictable manner. This clarity and precision are crucial for creating a reliable and effective specification that can be universally understood and utilized.
 
 ### Example
 
-In the catalog discussed earlier, "orders-backend" and "orders-frontend" are both Intents of type "application". Their specifications must use the schema as defined in the "application" type.
+In the case of a "MySQL" Intent Type, the structure would guide the user to specify essential details such as the MySQL version, storage sizing etc. as well as provide the necessary connection details for other components to interact with the database.
 
 ---
 
@@ -83,4 +83,4 @@ Real-world scenarios often demand adjustments. Environments provide the platform
 
 ### Example
 
-The orders-database Intent might have to be fulfilled with a larger resource allocation in production environment than in the lower environments
+The orders-database Intent might have to be fulfilled with a larger resource allocation in production environment than in the lower environments. This information is captured as overrides, which are environment specific.
