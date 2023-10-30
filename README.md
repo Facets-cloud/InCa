@@ -49,22 +49,6 @@ infrastructure using code. However, it's not without its challenges:
 **InCa** offers a solution to these challenges by abstracting the complexities and providing a more structured, modular,
 and intuitive approach to defining infrastructure.
 
-## Design (Explanation) 
-[This will get updated constantly]
-
-The essence of **InCa** revolves around two primary constructs:
-
-1. **Resource Types (Intents)**: These represent high-level definitions of infrastructure components, such as MySQL
-   databases, compute instances, or storage mechanisms. They focus on the overarching purpose or intent, devoid of
-   implementation specifics.
-
-2. **Flavors**: For every resource type or intent, there can be multiple flavors, signifying different implementations.
-   For instance, a MySQL intent can have flavors like MySQL on Kubernetes, AWS RDS, or Azure SQL. These flavors
-   encapsulate the specifics of the implementation, allowing the intents to remain abstract.
-
-The relationship between intents and flavors is steered by constraints. These constraints ensure that only compatible
-flavors are chosen for a particular intent, based on factors like the underlying cloud provider or specific
-prerequisites.
 
 ### How to imagine a product infrastructure as a catalog.
 
