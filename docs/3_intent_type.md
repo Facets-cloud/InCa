@@ -1,18 +1,18 @@
 # Giving a Structure to Intent Types
 
-## Introduction:
+## Introduction
 As we progress in our journey with Infrastructure Catalog (InCa), having established the terminologies, our next pivotal step involves solidifying the Intent Type definition. The objective of this document is to provide the standard fields that should be present in the Intent Types for users to accurately and effectively define an intent.
 
-## Why Need Structure:
+## Why Need Structure
 The Intent Type is crucial as it can act as a definition, guiding the realization of Intent. Establishing a standardized set of fields for the IntentType is vital to truly capture the answers to the right questions depending on the Intent Type.
 
-## Key Considerations:
+## Key Considerations
 - Clarity and Simplicity: The structure should be easy to understand and use, ensuring that users can define intents without ambiguity.
 - Flexibility: The Structure should accommodate a range of intent types, providing users with the adaptability to define various Intents.
 - Scalability: As projects evolve, the structure should be able to support growth and complexity without becoming cumbersome.
 - Compatibility: Ensure that the structure is compatible with various implementation choices and does not restrict the use of different technologies or platforms.
 
-## Standard Fields:
+## Standard Fields
 | Field     | Type   | Description                                               |
 |-----------|--------|-----------------------------------------------------------|
 | metadata  | Object | Contains descriptive and auxiliary information.           |
@@ -22,7 +22,7 @@ The Intent Type is crucial as it can act as a definition, guiding the realizatio
 | flavor    | Object | Specifies the default implementation details.             |
 | advanced  | Object | Contains flavor-specific specifications.                   |
 
-## Metadata Object:
+### Metadata Object:
 | Field             | Type   | Description                                |
 |-------------------|--------|--------------------------------------------|
 | maintainer        | String | The person/team maintaining the resource.  |
@@ -31,19 +31,19 @@ The Intent Type is crucial as it can act as a definition, guiding the realizatio
 | name              | String | The name of the resource.                   |
 | description       | String | A brief description of the resource.       |
 
-## Flavor Object:
+### Flavor Object:
 | Field   | Type   | Description                                |
 |---------|--------|--------------------------------------------|
 | version | String | The version of the default implementation.|
 | name    | String | The name of the default implementation.   |
 
-## Advanced Object:
+### Advanced Object:
 [FlavorName]: Specifications and configurations related to a particular flavor.
 Type: Object
 Description: Contains attributes and configurations specific to the flavor named [FlavorName].
 Sub-fields: Vary depending on the flavor.
 
-## [FlavorName] Object Example:
+### [FlavorName] Object Example:
 | Field      | Type   | Description            |
 |------------|--------|------------------------|
 | attributeA | String | Description of attribute A. |
