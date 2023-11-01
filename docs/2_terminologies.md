@@ -4,41 +4,54 @@ Refer to the [discussion on GitHub](https://github.com/Facets-cloud/InCa/discuss
 
 ---
 
-## Infrastructure as Catalog (InCa)
-
-The **Infrastructure as Catalog** (InCa) system is a repository or collection of user intentions, referred to as "Intents". This collection acts as a structured inventory of various resources or setups that users might wish to establish.
-
----
-
-## Intent Kind
+## Infrastructure Catalog
 
 ### Definition
 
-**Intent Kind** provides a foundational classification within the InCa system, offering clarity about the general category or type of resource a user is aiming to set up.
+An Infrastructure Catalog describes the architecture of software by detailing the building blocks and their inter-dependencies. InCa aims to provide the language necessary to describe this catalog. The information in the catalog must be sufficient to manifest a functional deployment of the software.
 
 ### Rationale
 
-The Intent Kind ensures that the catalog captures the user's basic intention. It should be general enough to avoid reflecting intricate implementation details but specific enough to convey the user's exact needs.
+Such a catalog serves several purposes:
+
+- Ability to describe, share, and modify software architectures
+- Leverage the information to provision and maintain deployments of the software
 
 ### Example
 
-Imagine a company that wants to set up a new database system. Instead of a nebulous category like "database", they'd specify the Intent Kind as "MySQL", pinpointing their preference.
+For a simple three-tier order processing web service, the catalog would describe the orders-frontend application, the orders-backend application, the orders-database MySQL database, and the load balancer used. It would also describe the relations between these components.
 
 ---
 
-## Intents
+## Intent
 
 ### Definition
 
-An **Intent** delves deeper into the specific resource under the broad category defined by its associated Intent Kind. While Intent Kind gives a general classification, an Intent specifies the exact resource or configuration a user wishes to establish.
+Intents are the building blocks that form an Infrastructure Catalog. An Intent identifies itself with a name, states its purpose, provides its specifications, dependencies on other Intents, and how other Intents can interact with it.
 
 ### Rationale
 
-Intents add granularity to the catalog, ensuring that users can detail their requirements beyond the general category provided by the Intent Kind.
+The building blocks of an Infrastructure Catalog must clearly capture and describe the software architect's "Intent." Hence, the term "Intent" in InCa refers to these building blocks.
 
 ### Example
 
-Following the previous scenario, under the "MySQL" Intent Kind, the company could have multiple Intents like "Orders Database", "Customer Database", and "Inventory Database".
+In the catalog discussed earlier, the "orders-database" would be one of the Intents. It would state that it is named "orders-database." It would specify the type of database (e.g., MySQL), version, configuration settings, and any initialization scripts required. It would also provide the connection details that other Intents, such as "orders-backend," need to interact with it.
+
+---
+
+## Intent Type
+
+### Definition
+
+An Intent Type provides a clear and detailed structure for describing a specific intent in an Infrastructure Catalog. It must be precise and comprehensive, ensuring that a user has all the necessary information to replicate the architecture independently.
+
+### Rationale
+
+Intent Types are vital for maintaining interoperability across various tools and systems, ensuring that each component in the Infrastructure Catalog is described in a standardized and predictable manner. This clarity and precision are crucial for creating a reliable and effective specification that can be universally understood and utilized.
+
+### Example
+
+In the case of a "MySQL" Intent Type, the structure would guide the user to specify essential details such as the MySQL version, storage sizing, etc., as well as provide the necessary connection details for other components to interact with the database.
 
 ---
 
@@ -46,15 +59,15 @@ Following the previous scenario, under the "MySQL" Intent Kind, the company coul
 
 ### Definition
 
-For every Intent and its corresponding Kind, there are diverse ways to achieve or implement it. These methods are termed "Flavors", offering users a range of options on how they'd like their intent to be manifested.
+Flavors represent specific implementations of the Intents described by a generic Intent Type, detailing the unique aspects of its implementation while maintaining consistent specifications and interaction modes.
 
 ### Rationale
 
-A single Intent can have multiple approaches to realization. Flavors empower users with choices, allowing them to pick an implementation that aligns best with their needs.
+It must be possible to manifest a functional deployment of the software described in an Infrastructure Catalog. Capturing implementation information is an important aspect in this regard.
 
 ### Example
 
-For the "Orders Database" Intent under the "MySQL" Intent Kind, the company might be offered Flavors like "Helm chart in Kubernetes", "RDS in AWS", or "Docker Container".
+For the "orders-database" Intent under the "MySQL" Intent Kind, the flavor may be "RDS" in AWS, "CloudSQL" in GCP, etc.
 
 ---
 
@@ -62,7 +75,7 @@ For the "Orders Database" Intent under the "MySQL" Intent Kind, the company migh
 
 ### Definition
 
-An **Environment** symbolizes the actual instantiation of the entire InCa catalog. Moreover, **Environment Overrides** allow users to tweak specific configurations for this environment.
+An environment is an isolated deployment of the software described in a Catalog. It includes manifestations of all the Intents in the Catalog. Overrides are environment-specific customizations of the Catalog.
 
 ### Rationale
 
@@ -70,8 +83,6 @@ Real-world scenarios often demand adjustments. Environments provide the platform
 
 ### Example
 
-The company, after choosing the "Orders Database" Intent, the "MySQL" Intent Kind, and the "RDS in AWS" Flavor, initiates the database in a production environment. However, they might prefer a smaller instance size for their development environment. This alteration in instance size is an instance of an **Environment Override**.
+The orders-database Intent might require a larger resource allocation in the production environment than in the lower environments. This information is captured as overrides, which are environment-specific.
 
 ---
-
-In summation, the **Infrastructure as Catalog** system is structured with **Intent Kinds** at its foundation. Each Intent Kind can house multiple specific **Intents**, adding depth to the user's requirements. Varied **Flavors** outline the ways to bring each Intent to fruition. The entire catalog can then be actualized in an **Environment**, with provisions for custom adjustments through **Environment Overrides**.
