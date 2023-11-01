@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "maintainer": {"type": "string"},
+        "documentation_link": {"type": "string"},
+        "labels": {"type": "object", "additionalProperties": {"type": "string"}},
+        "name": {"type": "string"},
+        "description": {"type": "string"}
+      },
+      "required": ["name"]
+    },
+    "kind": {"type": "string"},
+    "spec": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string"},
+        "server_variables": {
+          "type": "object",
+          "additionalProperties": {"type": "string"},
+          "description": "Optional MySQL server variables."
+        }
+      },
+      "required": ["version"]
+    },
+    "disabled": {"type": "boolean"},
+    "flavor": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string"},
+        "name": {"type": "string"}
+      }
+    }
+  },
+  "required": ["metadata", "kind", "spec"]
+}
