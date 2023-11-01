@@ -15,7 +15,7 @@ The Intent Type is crucial as it serves as a guide for the realization of Intent
 ## Standard Fields
 | Field       | Type   | Description                                           | Required |
 |-------------|--------|-------------------------------------------------------|----------|
-| apiVersion  | String | Specifies the version of the schema.                  | Yes      |
+| api_version | String | Specifies the version of the schema.                  | Yes      |
 | metadata    | Object | Contains descriptive and auxiliary information.       | Yes      |
 | kind        | String | Describes the intent/kind of the resource.            | Yes      |
 | spec        | Object | Detailed information about the resource.              | Yes      |
