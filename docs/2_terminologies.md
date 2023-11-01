@@ -59,7 +59,7 @@ In the case of a "MySQL" Intent Type, the structure would guide the user to spec
 
 ### Definition
 
-Intents of the same type may still differ in details of its implementation. But the intent specification and the mode of interaction with it remains unchanged. These intents are then said to be of different "flavors".
+Flavors represent specific implementations of the Intents described by a generic Intent Type, detailing the unique aspects of its implementation while maintaining consistent specifications and interaction modes.
 
 ### Rationale
 
