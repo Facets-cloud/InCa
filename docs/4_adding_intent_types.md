@@ -20,7 +20,8 @@ Each Intent Type folder should contain the following files:
 3. `schema.json`: A JSON schema file defining the structure and data types for the intent type.
 4. `sample.json`: A JSON file with a sample intent created using this type.
 
-```json {
+```json 
+{
   "name": "ExampleIntent",
   "api_version":"v1alpha1",
   "description": "A brief description of what Example Intent Type represents.",
