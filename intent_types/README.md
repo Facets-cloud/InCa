@@ -12,6 +12,25 @@ Here's a brief overview of the directory structure and the contents you would fi
             - `schema.json`: The JSON Schema file defining the structure and rules for this version of the intent.
             - `README.md`: The documentation file providing detailed information about this version of the intent.
             - `sample.json`: A sample JSON file showing a valid instance of this version of the intent.
+            - `intent.json`: Contains details such as the intent's name, API version, and a brief description. Used to construct the `index.yaml` file.
+
+### `intent.json` File
+
+The `intent.json` file in each version folder contains metadata about the intent, including:
+
+- `name`: The name of the intent.
+- `api_version`: The version of the API.
+- `description`: A brief description of the intent.
+
+Here is an example of what the `intent.json` file might look like:
+
+```json
+{
+  "name": "MySQL Database",
+  "api_version": "0.1.0",
+  "description": "An Intent Type for deploying and managing MySQL databases."
+}
+```
 
 ## Index Structure
 
