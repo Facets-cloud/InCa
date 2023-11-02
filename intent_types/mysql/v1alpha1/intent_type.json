@@ -1,0 +1,5 @@
+{
+  "name": "MySQL Database",
+  "api_version": "v1alpha1",
+  "description": "An Intent Type for deploying and managing MySQL databases, following Kubernetes style version naming."
+}

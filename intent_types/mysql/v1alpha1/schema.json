@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["api_version", "metadata", "kind", "spec", "flavor"],
+  "properties": {
+    "api_version": {
+      "type": "string",
+      "enum": ["v1alpha1"],
+      "description": "Specifies the version of the schema."
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "maintainer": {"type": "string"},
+        "documentation_link": {"type": "string"},
+        "labels": {
+          "type": "object",
+          "additionalProperties": {"type": "string"}
+        },
+        "name": {"type": "string"},
+        "description": {"type": "string"}
+      }
+    },
+    "kind": {"type": "string"},
+    "spec": {
+      "type": "object",
+      "required": ["version", "replication"],
+      "properties": {
+        "version": {"type": "string"},
+        "server_variables": {
+          "type": "object",
+          "additionalProperties": {"type": "string"},
+          "description": "Optional MySQL server variables."
+        },
+        "replication": {
+          "type": "object",
+          "required": ["enabled", "type", "replica_count"],
+          "properties": {
+            "enabled": {"type": "boolean"},
+            "type": {"type": "string"},
+            "replica_count": {"type": "integer"}
+          }
+        }
+      }
+    },
+    "disabled": {"type": "boolean", "default": false},
+    "flavor": {
+      "type": "object",
+      "required": ["version", "name"],
+      "properties": {
+        "version": {"type": "string"},
+        "name": {"type": "string"}
+      }
+    },
+    "advanced": {"type": "object"}
+  }
+}
