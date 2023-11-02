@@ -1,76 +1,42 @@
 # Infrastructure as Catalog (InCa)
 
 ## Introduction
-
-Welcome to **Infrastructure as Catalog (InCa)**, an open-source initiative that redefines infrastructure management
-through abstraction and declarative definitions. By allowing users to define their infrastructure needs at a high level,
-using a catalog, the intricate details of infrastructure setup and maintenance are abstracted away. This not only
-streamlines the process but also ensures a more flexible and scalable infrastructure management approach.
+Infrastructure as Catalog (InCa) is an open-source initiative devised to redefine infrastructure management by abstracting complex architectures into a cloud-neutral, declarative catalog. This allows users to articulate their infrastructure needs at a high level through a unified language, abstracting away the intricate details of infrastructure setup and maintenance. Such an abstraction not only streamlines infrastructure management but also promotes flexibility, scalability, and effective knowledge sharing across diverse entities and the broader open-source community.
 
 ## Why InCa?
+Traditional infrastructure management often involves manual processes, scripts, and configurations tightly bound to specific technologies or platforms. This conventional approach can result in:
 
-Traditional infrastructure management is often mired in manual processes, scripts, and configurations that are tightly
-bound to specific technologies or platforms. Such an approach can lead to:
+1. **Inflexibility**: Any modification to the infrastructure or transition to a new platform becomes a significant undertaking.
+2. **Complexity**: As the infrastructure grows, managing it becomes increasingly convoluted, leading to potential errors and inefficiencies.
+3. **Limited Scalability**: Tightly intertwined configurations and scripts may not scale efficiently with escalating infrastructure demands.
 
-- **Inflexibility**: Modifying a part of the infrastructure or transitioning to a new platform becomes a monumental
-  task.
-- **Complexity**: As the infrastructure expands, its management becomes increasingly convoluted, leading to potential
-  errors and inefficiencies.
-- **Limited Scalability**: Configurations and scripts that are closely intertwined might not scale efficiently with
-  burgeoning infrastructure demands.
+InCa addresses these challenges through:
 
-**InCa** addresses these challenges:
-
-- **Documenting Architecture**: This approach inherently documents the entire infrastructure architecture in one
-  centralized location, ensuring clarity, transparency, and ease of reference.
-- **Promoting Platform Engineering**: Different resource types can be owned and managed by distinct personas or teams.
-  This clear delineation promotes responsibility and expertise in platform engineering.
-- **Promoting Abstraction**: By focusing on the desired outcome (e.g., a MySQL database or a compute instance) rather
-  than its implementation, users can effortlessly switch between different implementations (flavors) without altering
-  the overarching definitions.
-- **Boosting Flexibility**: Want to transition from an on-premises MySQL database to one based in the cloud? Simply
-  modify the flavor in your catalog, leaving the core definition untouched.
-- **Streamlining Management**: With each resource defined individually, the system becomes modular, facilitating easier
-  management, versioning, and collaboration.
+1. **Documenting Architecture**: InCa inherently documents the entire infrastructure architecture in a centralized catalog, promoting clarity, transparency, and ease of reference.
+2. **Promoting Platform Engineering**: Distinct resource types can be owned and managed by different personas or teams, fostering responsibility and expertise in platform engineering.
+3. **Promoting Abstraction**: By focusing on the desired outcome (e.g., a MySQL database or a compute instance) rather than its implementation, users can effortlessly switch between different implementations without altering the overarching definitions.
+4. **Boosting Flexibility**: Transitioning from an on-premises MySQL database to a cloud-based one? Simply modify the flavor in your catalog, leaving the core definition intact.
+5. **Streamlining Management**: With each resource defined individually, the system becomes modular, facilitating easier management, versioning, and collaboration.
 
 ## Why is IaC not enough?
+Infrastructure as Code (IaC) has significantly benefited many organizations by enabling automation and management of infrastructure using code. However, writing IaC as per custom requirements poses challenges like:
 
-Infrastructure as Code (IaC) has been a game-changer for many organizations, allowing them to automate and manage their
-infrastructure using code. However, it's not without its challenges:
+1. **Custom Language Requirement**: Writing IaC as per custom requirements often requires a deep understanding of both the infrastructure components and the scripting or coding involved, which not every organization possesses. On the other hand, writing against a standard language as proposed by InCa can simplify this process.
+2. **Poor Coding Practices**: Like any codebase, IaC can suffer from bad coding practices, resulting in inefficiencies, vulnerabilities, and maintenance issues.
+3. **Modularization Issues**: Organizations often struggle to modularize their IaC properly, leading to tightly coupled configurations that are challenging to manage, update, or scale.
 
-- **Lack of Expertise**: Properly implementing IaC requires a deep understanding of both the infrastructure components
-  and the scripting or coding involved. Not every organization has this expertise in-house, leading to suboptimal
-  implementations.
-- **Poor Coding Practices**: Just like any other codebase, IaC can suffer from bad coding practices, leading to
-  inefficiencies, vulnerabilities, and maintenance nightmares.
-- **Modularization Issues**: Often, organizations struggle to modularize their IaC properly. This results in tightly
-  coupled configurations that are hard to manage, update, or scale.
+InCa mitigates these challenges by abstracting complexities and providing a structured, modular, and intuitive approach to defining infrastructure.
 
-**InCa** offers a solution to these challenges by abstracting the complexities and providing a more structured, modular,
-and intuitive approach to defining infrastructure.
+## Envisioning Product Infrastructure as a Catalog
+Infrastructure creation for any product typically follows distinct layers:
 
+1. Initially, it often starts with a cloud provider account. While architecting a product, one or multiple accounts might be involved due to varying billing requirements or specific compliance mandates.
+2. Following this is the foundational networking layer, where decisions regarding VPCs, subnets, security groups, and other related elements are made in alignment with organizational standards and the chosen cloud provider's specifications.
+3. Building on this foundation is the orchestration layer, usually embodied by systems like Kubernetes, set up predominantly by platform teams to provide a conducive environment for application teams to host their applications.
+4. At the apex, we have resources - the essential building blocks of any architectural design, encompassing components like services, databases, caches, and more.
 
-### How to imagine a product infrastructure as a catalog.
+Although not exhaustive, this structured overview provides a foundational catalog to aid in visualizing the catalog as per InCa's objective of establishing a cloud-neutral, abstract representation of intricate architectures, fostering effective knowledge sharing and collaborative innovation.
 
-When we dissect the process of infrastructure creation for any product, it's typically built in distinct layers.
-
-Initially, we often begin with a cloud provider account. In constructing an architecture for a product, there might be
-one or multiple accounts involved. The need for separate accounts can arise from factors like distinct billing
-requirements or specific compliance mandates.
-
-Next, we lay down the foundational networking layer. In this phase, decisions about VPCs, subnets, security groups, and
-other related elements are made, aligning with both the organizational standards and the specifications of the selected
-cloud provider.
-
-Building upon this is the orchestration layer, commonly embodied by systems like Kubernetes. This layer is predominantly
-set up by platform teams and serves as a catalyst for application teams. It offers them a conducive environment to host
-their applications.
-
-At the pinnacle, we have resources, which are the essential building blocks of any architectural design. This category
-includes components such as services, databases, caches, and the like.
-
-While this list provides a structured overview, it's not exhaustive. However, it offers a foundational sample to aid in
-visualizing our catalog.
 
 ![](assets/catalog-diagram.png)
 
