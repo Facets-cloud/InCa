@@ -1,4 +1,5 @@
 {
+  "api_version": "v1alpha1",
   "metadata": {
     "maintainer": "rohit@example.com",
     "documentation_link": "https://example.com/documentation",
@@ -16,7 +17,7 @@
       "query_cache_size": "0"
     },
     "replication": {
-      "enabled": false,
+      "enabled": true,
       "type": "master-slave",
       "replica_count": 2
     }
@@ -25,5 +26,6 @@
   "flavor": {
     "version": "1.0",
     "name": "standard"
-  }
+  },
+  "advanced": {}
 }
