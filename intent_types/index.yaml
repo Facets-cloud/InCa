@@ -1,2 +1,10 @@
-apiVersion: v1
-intent_types: []
+intent_types:
+- description: An Intent Type for deploying and managing MySQL databases, following
+    Kubernetes style version naming.
+  name: mysql
+  versions:
+  - documentation: https://raw.githubusercontent.com/Facets-cloud/InCa/main/intent_types/mysql/v1alpha1/README.md
+    sample: https://raw.githubusercontent.com/Facets-cloud/InCa/main/intent_types/mysql/v1alpha1/sample.json
+    schema: https://raw.githubusercontent.com/Facets-cloud/InCa/main/intent_types/mysql/v1alpha1/schema.json
+    version: v1alpha1
+version: v1
