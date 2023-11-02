@@ -26,7 +26,7 @@ Here is an example of what the `intent.json` file might look like:
 
 ```json
 {
-  "name": "MySQL Database",
+  "name": "mysql",
   "api_version": "0.1.0",
   "description": "An Intent Type for deploying and managing MySQL databases."
 }
