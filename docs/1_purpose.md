@@ -12,13 +12,13 @@ language** that enables the seamless conceptualization and realization of infras
 ## Unified Language
 
 InCa is envisioned to be more than just a theoretical construct; it is intended to be a **comprehensive and actionable
-blueprint**. It aspires to go beyond being mere literature, offering a tangible framework that can be actualized to meet
+catalog**. It aspires to go beyond being mere literature, offering a tangible framework that can be actualized to meet
 infrastructural objectives. This unified language is designed to be inclusive and universal, allowing various
 stakeholders to communicate, collaborate, and innovate effectively, fostering a shared understanding and mutual growth.
 
-## Actionable Blueprints
+## Actionable Catalogs
 
-The future implementation of InCa is planned to comprehend and interpret these architectural blueprints, possessing the
+The future implementation of InCa is planned to comprehend and interpret this architecture catalog, possessing the
 capability to manifest the defined architectures in any environment, given the appropriate inputs. This approach is
 aimed at ensuring the **replicability and consistency** of infrastructure across different platforms and ecosystems,
 allowing organizations to adapt and scale efficiently.
