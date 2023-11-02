@@ -14,6 +14,11 @@
     "server_variables": {
       "max_connections": "1000",
       "query_cache_size": "0"
+    },
+    "replication": {
+      "enabled": false,
+      "type": "master-slave",
+      "replica_count": 2
     }
   },
   "disabled": false,
