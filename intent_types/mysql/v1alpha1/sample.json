@@ -16,15 +16,19 @@
       "max_connections": "1000",
       "query_cache_size": "0"
     },
-    "size": {
-      "cpu": "100m",
-      "memory": "100Mi"
-    },
-    "volume": "50G",
     "replication": {
       "enabled": true,
       "type": "master-slave",
       "replica_count": 2
+    },
+    "backup": {
+      "enabled": false,
+      "frequency": "0 0 * * 7",
+      "retention": "30",
+      "storage":{
+        "type":"nfs",
+        "path":"/path/to/backups"
+      }
     }
   },
   "disabled": false,
@@ -32,14 +36,5 @@
     "version": "1.0",
     "name": "standard"
   },
-  "advanced": {
-    "common":{
-      "backup":{
-        "enabled":false,
-        "backup_window":"0 0 * * 7",
-        "retention":"30"
-      }, 
-      "monitoring": true
-    }
-  }
+  "advanced": {}
 }
