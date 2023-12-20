@@ -9,15 +9,23 @@
           "name": "postgres-instance",
           "description": "A Postgres database instance."
     },
-    "kind": "postgres",
+    "kind": "postgreSQL",
     "spec": {
         "version": "16.1",
-        "architecture": {
-            "type": "standalone",
-            "size": {
-                "cpu": "1",
-                "memory": "2gi"
-            }
+        "configuration_parameters": {
+            "max_connections": "1000"
+        },
+        "encryption": {
+            "enabled": true,
+            "type": "TLS"
+        },
+        "replication": {
+            "enabled": true,
+            "type": "master"
+        },
+        "backup": {
+            "enabled": true,
+            "frequency": "monthly"
         }
     },
     "disabled": false,

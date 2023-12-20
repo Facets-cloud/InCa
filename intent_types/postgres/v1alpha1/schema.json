@@ -2,37 +2,114 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "properties": {
-      "api_version": { "type": "string" },
+      "api_version": {
+        "type": "string"
+      },
       "metadata": {
         "type": "object",
         "properties": {
-          "maintainer": { "type": "string" },
-          "documentation_link": { "type": "string", "format": "uri" },
-          "labels": { "type": "object" },
-          "name": { "type": "string" },
-          "description": { "type": "string" }
+          "maintainer": {
+            "type": "string",
+            "format": "email"
+          },
+          "documentation_link": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "object",
+            "properties": {
+              "owner": {
+                "type": "string",
+                "format": "email"
+              }
+            },
+            "required": ["owner"]
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
         },
-        "required": ["maintainer", "documentation_link", "name"]
+        "required": ["maintainer", "documentation_link", "labels", "name", "description"]
       },
-      "kind": { "type": "string" },
+      "kind": {
+        "type": "string"
+      },
       "spec": {
         "type": "object",
         "properties": {
-          "version": { "type": "string" },
-          "architecture": { "type": "string", "enum": ["standalone", "master-slave"] }
+          "version": {
+            "type": "string"
+          },
+          "configuration_parameters": {
+            "type": "object",
+            "properties": {
+              "max_connections": {
+                "type": "string"
+              }
+            },
+            "required": ["max_connections"]
+          },
+          "encryption": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "string"
+              }
+            },
+            "required": ["enabled", "type"]
+          },
+          "replication": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "string"
+              }
+            },
+            "required": ["enabled", "type"]
+          },
+          "backup": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "frequency": {
+                "type": "string"
+              }
+            },
+            "required": ["enabled", "frequency"]
+          }
         },
-        "required": ["version", "architecture"]
+        "required": ["version", "configuration_parameters", "encryption", "replication", "backup"]
       },
-      "disabled": { "type": "boolean" },
+      "disabled": {
+        "type": "boolean"
+      },
       "flavor": {
         "type": "object",
         "properties": {
-          "version": { "type": "string" },
-          "name": { "type": "string" }
+          "version": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
         },
         "required": ["version", "name"]
       },
-      "advanced": { "type": "object" }
+      "advanced": {
+        "type": "object"
+      }
     },
     "required": ["api_version", "metadata", "kind", "spec", "disabled", "flavor"]
 }
+  
