@@ -1,22 +1,26 @@
-# MySQL Intent Type
+# Redis Intent Type
 
 ## Overview
 
-This intent type is designed to represent a MySQL database configuration within an Infrastructure Catalog. It encapsulates the necessary information for provisioning and managing a MySQL database instance.
+This intent type is designed to represent a Redis database configuration within an Infrastructure Catalog. It encapsulates the necessary information for provisioning and managing a Redis database instance.
 
 ## Fields
 
 - `metadata`: Contains auxiliary information such as the maintainer, documentation link, labels, name, and description.
-- `kind`: Specifies the kind of the resource, in this case, `mysql`.
-- `spec`: Contains detailed information about the MySQL instance including the MySQL version and optional server variables.
+- `kind`: Specifies the kind of the resource, in this case, `redis`.
+- `spec`: Contains detailed information about the Redis instance including the Redis version.
 - `disabled`: Indicates if the resource is disabled (`true`) or enabled (`false`) by default.
 - `flavor`: Specifies the default implementation details, including the version and name.
 
 ## Specification
 
 In the `spec` object:
-- `version`: Specifies the MySQL version (e.g., `5.7`, `8.0`).
-- `server_variables`: An optional field for specifying MySQL server variables as a map of key-value pairs (e.g., `max_connections: "1000"`).
+- `version`: Specifies the Redis version (e.g., `7.2.2`, `6.2.14`).
+- `server_mode`: A field to specify if want to Redis in standalone or cluster mode
+- `persistence`: Optional configuration for enabling redis persistence, here you can specify persistence options like RBD, AOF
+- `replication`: Optional configuration for enabling redis master slave replication, you can specify replicas required
+- `cache`: Optional Configuring Redis as a cache - setting maxmemory and maxmemory-policy
+- `auth`: TBD - support for acl
 
 ## Example
 

@@ -1,58 +1,234 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "type": "object",
-  "required": ["api_version", "metadata", "kind", "spec", "flavor"],
+  "required": [
+    "api_version",
+    "metadata",
+    "kind",
+    "spec",
+    "flavor"
+  ],
   "properties": {
     "api_version": {
       "type": "string",
-      "enum": ["v1alpha1"],
+      "enum": [
+        "v1alpha1"
+      ],
       "description": "Specifies the version of the schema."
     },
     "metadata": {
       "type": "object",
-      "required": ["name"],
+      "required": [
+        "name"
+      ],
       "properties": {
-        "maintainer": {"type": "string"},
-        "documentation_link": {"type": "string"},
+        "maintainer": {
+          "type": "string"
+        },
+        "documentation_link": {
+          "type": "string"
+        },
         "labels": {
           "type": "object",
-          "additionalProperties": {"type": "string"}
-        },
-        "name": {"type": "string"},
-        "description": {"type": "string"}
-      }
-    },
-    "kind": {"type": "string"},
-    "spec": {
-      "type": "object",
-      "required": ["version", "replication"],
-      "properties": {
-        "version": {"type": "string"},
-        "server_variables": {
-          "type": "object",
-          "additionalProperties": {"type": "string"},
-          "description": "Optional MySQL server variables."
-        },
-        "replication": {
-          "type": "object",
-          "required": ["enabled", "type", "replica_count"],
-          "properties": {
-            "enabled": {"type": "boolean"},
-            "type": {"type": "string"},
-            "replica_count": {"type": "integer"}
+          "additionalProperties": {
+            "type": "string"
           }
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
         }
       }
     },
-    "disabled": {"type": "boolean", "default": false},
-    "flavor": {
+    "kind": {
+      "type": "string"
+    },
+    "spec": {
       "type": "object",
-      "required": ["version", "name"],
+      "required": [
+        "version",
+        "server_mode",
+        "size"
+      ],
       "properties": {
-        "version": {"type": "string"},
-        "name": {"type": "string"}
+        "version": {
+          "type": "string"
+        },
+        "server_mode": {
+          "type": "string",
+          "enum": [
+            "standalone",
+            "replication"
+          ],
+          "description": "The server mode to run redis in"
+        },
+        "persistence": {
+          "type": "object",
+          "properties": {
+            "rdb": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "snapshotTimeInSec": {
+                  "type": "integer"
+                },
+                "noOfchanges": {
+                  "type": "integer"
+                }
+              },
+              "if": {
+                "properties": {
+                  "enabled": {
+                    "const": true
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "snapshotTimeInSec",
+                  "noOfchanges"
+                ]
+              }
+            }
+          },
+          "description": "Optional persistence config. Either specify `rdb` config or `aos` config"
+        },
+        "replication": {
+          "type": "object",
+          "description": "Configure the replication count (optional)",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "replica_count": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "enabled"
+          ],
+          "if": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "replica_count"
+            ]
+          }
+        },
+        "cache": {
+          "type": "object",
+          "properties": {
+            "enable": {
+              "type": "boolean"
+            },
+            "maxmemory": {
+              "type": "string"
+            },
+            "maxmemory-policy": {
+              "type": "string",
+              "enum": [
+                "noeviction",
+                "allkeys-lru",
+                "allkeys-lfu",
+                "volatile-lru",
+                "volatile-lfu",
+                "allkeys-random",
+                "volatile-random",
+                "volatile-ttl"
+              ]
+            }
+          },
+          "required": [
+            "enable"
+          ],
+          "if": {
+            "properties": {
+              "enable": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "maxmemory",
+              "maxmemory-policy"
+            ]
+          }
+        },
+        "auth": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "username": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          },
+          "if": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "username",
+              "password"
+            ]
+          }
+        },
+        "size": {
+          "type": "object",
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cpu",
+            "memory"
+          ]
+        }
       }
     },
-    "advanced": {"type": "object"}
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "flavor": {
+      "type": "object",
+      "required": [
+        "version",
+        "name"
+      ],
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "advanced": {
+      "type": "object"
+    }
   }
 }
