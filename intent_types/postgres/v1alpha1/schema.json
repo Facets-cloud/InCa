@@ -1,0 +1,112 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "api_version": {
+        "type": "string"
+      },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "maintainer": {
+            "type": "string",
+            "format": "email"
+          },
+          "documentation_link": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "object",
+            "properties": {
+              "owner": {
+                "type": "string",
+                "format": "email"
+              }
+            },
+            "required": ["owner"]
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["maintainer", "documentation_link", "labels", "name", "description"]
+      },
+      "kind": {
+        "type": "string"
+      },
+      "spec": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string"
+          },
+          "configuration_parameters": {
+            "type": "object",
+              "additionalProperties": {"type": "string"},
+              "description": "Configuration Parameters for PostgresSQL."
+          },
+          "encryption": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "string"
+              }
+            },
+            "required": ["enabled", "type"]
+          },
+          "replication": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "string"
+              },
+              "replica_count": {"type": "integer"}
+            },
+            "required": ["enabled", "type"]
+          },
+          "backup": {
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "frequency": {
+                "type": "string"
+              }
+            },
+            "required": ["enabled", "frequency"]
+          }
+        },
+        "required": ["version", "configuration_parameters", "encryption", "replication", "backup"]
+      },
+      "disabled": {
+        "type": "boolean"
+      },
+      "flavor": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": ["version", "name"]
+      },
+      "advanced": {
+        "type": "object"
+      }
+    },
+    "required": ["api_version", "metadata", "kind", "spec", "disabled", "flavor"]
+}
+  
