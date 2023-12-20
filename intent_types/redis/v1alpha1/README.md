@@ -19,8 +19,8 @@ In the `spec` object:
 - `server_mode`: A field to specify if want to Redis in standalone or cluster mode
 - `persistence`: Optional configuration for enabling redis persistence, here you can specify persistence options like RBD, AOF
 - `replication`: Optional configuration for enabling redis master slave replication, you can specify replicas required
-- `cache`: Optional Configuring Redis as a cache - setting maxmemory and maxmemory-policy
-- `auth`: TBD - support for acl
+- `redis_conf`: Any redis configuration that can be specified in redis.conf can be specified here
+- `auth`: Optional If password auth should be enabled or not can be specified here (if not specified then no-auth required to connect to redis) 
 
 ## Example
 
