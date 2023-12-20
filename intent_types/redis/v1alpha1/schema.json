@@ -136,7 +136,7 @@
           }
         },
         "auth": {
-          "type": "boolean",
+          "type": "object",
           "properties": {
             "password_auth_enabled": {
               "type": "boolean"
