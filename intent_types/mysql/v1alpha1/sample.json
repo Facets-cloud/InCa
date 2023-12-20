@@ -18,9 +18,9 @@
     },
     "size": {
       "cpu": "100m",
-      "memory": "100Mi",
-      "volume": "50G"
+      "memory": "100Mi"
     },
+    "volume": "50G",
     "replication": {
       "enabled": true,
       "type": "master-slave",
@@ -33,10 +33,13 @@
     "name": "standard"
   },
   "advanced": {
-    "backup":{
-      "enabled":false,
-      "backup_window":"0 0 * * 7"
-    }, 
-    "monitoring": true
+    "common":{
+      "backup":{
+        "enabled":false,
+        "backup_window":"0 0 * * 7",
+        "retention":"30"
+      }, 
+      "monitoring": true
+    }
   }
 }
