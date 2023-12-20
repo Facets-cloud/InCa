@@ -1,0 +1,31 @@
+{
+  "api_version": "v1alpha1",
+  "metadata": {
+    "maintainer": "rohit@example.com",
+    "documentation_link": "https://example.com/documentation",
+    "labels": {
+      "owner": "infrastructure@example.com"
+    },
+    "name": "my-mongo-instance",
+    "description": "A Mongo instance."
+  },
+  "kind": "mongo",
+  "spec": {
+    "version": "6.0.2",
+    "authenticated": true,
+    "size": {
+      "cpu": "2001m",
+      "memory": "900MiB",
+      "volume": "8G",
+      "instance_count": 3,
+      "cpu_reservation": "1000m",
+      "memory_reservation": "500MiB"
+    }
+  },
+  "disabled": false,
+  "flavor": {
+    "version": "1.0",
+    "name": "standard"
+  },
+  "advanced": {}
+}
