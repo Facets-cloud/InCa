@@ -17,9 +17,7 @@
       "cpu": "2001m",
       "memory": "900MiB",
       "volume": "8G",
-      "instance_count": 3,
-      "cpu_reservation": "1000m",
-      "memory_reservation": "500MiB"
+      "instance_count": 3
     }
   },
   "disabled": false,
