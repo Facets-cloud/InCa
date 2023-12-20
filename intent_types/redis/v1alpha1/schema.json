@@ -43,7 +43,8 @@
       }
     },
     "kind": {
-      "type": "string"
+      "type": "string",
+      "default": "redis"
     },
     "spec": {
       "type": "object",
@@ -135,71 +136,12 @@
             ]
           }
         },
-        "cache": {
-          "type": "object",
-          "properties": {
-            "enable": {
-              "type": "boolean"
-            },
-            "maxmemory": {
-              "type": "string"
-            },
-            "maxmemory-policy": {
-              "type": "string",
-              "enum": [
-                "noeviction",
-                "allkeys-lru",
-                "allkeys-lfu",
-                "volatile-lru",
-                "volatile-lfu",
-                "allkeys-random",
-                "volatile-random",
-                "volatile-ttl"
-              ]
-            }
-          },
-          "required": [
-            "enable"
-          ],
-          "if": {
-            "properties": {
-              "enable": {
-                "const": true
-              }
-            }
-          },
-          "then": {
-            "required": [
-              "maxmemory",
-              "maxmemory-policy"
-            ]
-          }
-        },
         "auth": {
-          "type": "object",
+          "type": "boolean",
           "properties": {
-            "enabled": {
+            "password_auth_enabled": {
               "type": "boolean"
-            },
-            "username": {
-              "type": "string"
-            },
-            "password": {
-              "type": "string"
             }
-          },
-          "if": {
-            "properties": {
-              "enabled": {
-                "const": true
-              }
-            }
-          },
-          "then": {
-            "required": [
-              "username",
-              "password"
-            ]
           }
         },
         "size": {
@@ -211,11 +153,11 @@
             "memory": {
               "type": "string"
             }
-          },
-          "required": [
-            "cpu",
-            "memory"
-          ]
+          }
+        },
+        "redis_conf": {
+          "type": "object",
+          "description": "The redis config"
         }
       }
     },
