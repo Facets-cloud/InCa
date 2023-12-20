@@ -50,8 +50,7 @@
       "type": "object",
       "required": [
         "version",
-        "server_mode",
-        "size"
+        "server_mode"
       ],
       "properties": {
         "version": {
@@ -141,17 +140,6 @@
           "properties": {
             "password_auth_enabled": {
               "type": "boolean"
-            }
-          }
-        },
-        "size": {
-          "type": "object",
-          "properties": {
-            "cpu": {
-              "type": "string"
-            },
-            "memory": {
-              "type": "string"
             }
           }
         },
