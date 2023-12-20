@@ -6,16 +6,12 @@
     "labels": {
       "owner": "infrastructure@example.com"
     },
-    "name": "my-mongo-instance",
-    "description": "A Mongo instance."
+    "name": "my-mongodb-instance",
+    "description": "A MongoDB instance."
   },
-  "kind": "mongo",
+  "kind": "mongodb",
   "spec": {
     "version": "6.0.2",
-    "sharding": {
-      "enabled": true,
-      "shard_count": 2
-    },
     "security": {
       "authentication": true,
       "authorization": true,
@@ -24,11 +20,13 @@
     "backup": {
       "enabled": true
     },
-    "size": {
-      "cpu": "2001m",
-      "memory": "900MiB",
-      "volume": "8G",
-      "instance_count": 3
+    "replication": {
+      "data_instances": 3,
+      "arbiter_instances": 1
+    },
+    "parameters": {
+      "key1": "value1",
+      "key2": "value2"
     }
   },
   "disabled": false,
