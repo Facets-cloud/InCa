@@ -45,12 +45,8 @@
           },
           "configuration_parameters": {
             "type": "object",
-            "properties": {
-              "max_connections": {
-                "type": "string"
-              }
-            },
-            "required": ["max_connections"]
+              "additionalProperties": {"type": "string"},
+              "description": "Configuration Parameters for PostgresSQL."
           },
           "encryption": {
             "type": "object",
@@ -72,7 +68,8 @@
               },
               "type": {
                 "type": "string"
-              }
+              },
+              "replica_count": {"type": "integer"}
             },
             "required": ["enabled", "type"]
           },
