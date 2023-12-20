@@ -1,0 +1,42 @@
+{
+  "api_version": "v1alpha1",
+  "metadata": {
+    "maintainer": "shashwat@example.com",
+    "documentation_link": "https://example.com/documentation",
+    "labels": {
+      "owner": "infrastructure@example.com"
+    },
+    "name": "my-redis-instance",
+    "description": "A Redis database instance."
+  },
+  "kind": "redis",
+  "spec": {
+    "version": "7.2.2",
+    "server_mode": "standalone",
+    "persistence": {
+      "rdb": {
+        "enable": true,
+        "snapshotTimeInSec": 300,
+        "noOfchanges": 10
+      },
+      "aof": {
+        "enable": false
+      }
+    },
+    "replication": {
+      "enabled": true,
+      "replica_count": 2
+    },
+    "auth": {
+      "password_auth_enabled": true
+    },
+    "redis_conf": {
+    }
+  },
+  "disabled": false,
+  "flavor": {
+    "version": "1.0",
+    "name": "standard"
+  },
+  "advanced": {}
+}

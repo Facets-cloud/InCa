@@ -1,0 +1,175 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "required": [
+    "api_version",
+    "metadata",
+    "kind",
+    "spec",
+    "flavor"
+  ],
+  "properties": {
+    "api_version": {
+      "type": "string",
+      "enum": [
+        "v1alpha1"
+      ],
+      "description": "Specifies the version of the schema."
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "maintainer": {
+          "type": "string"
+        },
+        "documentation_link": {
+          "type": "string"
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "kind": {
+      "type": "string",
+      "default": "redis"
+    },
+    "spec": {
+      "type": "object",
+      "required": [
+        "version",
+        "server_mode"
+      ],
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "server_mode": {
+          "type": "string",
+          "enum": [
+            "standalone",
+            "replication"
+          ],
+          "description": "The server mode to run redis in"
+        },
+        "persistence": {
+          "type": "object",
+          "properties": {
+            "rdb": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "snapshotTimeInSec": {
+                  "type": "integer"
+                },
+                "noOfchanges": {
+                  "type": "integer"
+                }
+              },
+              "if": {
+                "properties": {
+                  "enabled": {
+                    "const": true
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "snapshotTimeInSec",
+                  "noOfchanges"
+                ]
+              }
+            },
+            "aof": {
+              "type": "object",
+              "properties": {
+                "enable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "enable"
+              ]
+            }
+          },
+          "description": "Optional persistence config. Either specify `rdb` config or `aos` config"
+        },
+        "replication": {
+          "type": "object",
+          "description": "Configure the replication count (optional)",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "replica_count": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "enabled"
+          ],
+          "if": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "replica_count"
+            ]
+          }
+        },
+        "auth": {
+          "type": "object",
+          "properties": {
+            "password_auth_enabled": {
+              "type": "boolean"
+            }
+          }
+        },
+        "redis_conf": {
+          "type": "object",
+          "description": "The redis config"
+        }
+      }
+    },
+    "disabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "flavor": {
+      "type": "object",
+      "required": [
+        "version",
+        "name"
+      ],
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "advanced": {
+      "type": "object"
+    }
+  }
+}
