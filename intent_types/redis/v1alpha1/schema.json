@@ -93,6 +93,17 @@
                   "noOfchanges"
                 ]
               }
+            },
+            "aof": {
+              "type": "object",
+              "properties": {
+                "enable": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "enable"
+              ]
             }
           },
           "description": "Optional persistence config. Either specify `rdb` config or `aos` config"
