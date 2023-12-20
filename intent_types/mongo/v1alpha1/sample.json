@@ -13,6 +13,10 @@
   "spec": {
     "version": "6.0.2",
     "authenticated": true,
+    "sharding": {
+      "enabled": true,
+      "shard_count": 2
+    },
     "size": {
       "cpu": "2001m",
       "memory": "900MiB",
