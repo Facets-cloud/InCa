@@ -16,6 +16,11 @@
       "max_connections": "1000",
       "query_cache_size": "0"
     },
+    "size": {
+      "cpu": "100m",
+      "memory": "100Mi",
+      "volume": "50G"
+    },
     "replication": {
       "enabled": true,
       "type": "master-slave",
@@ -27,5 +32,11 @@
     "version": "1.0",
     "name": "standard"
   },
-  "advanced": {}
+  "advanced": {
+    "backup":{
+      "enabled":false,
+      "backup_window":"0 0 * * 7"
+    }, 
+    "monitoring": true
+  }
 }
