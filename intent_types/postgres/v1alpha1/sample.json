@@ -1,0 +1,29 @@
+{
+    "api_version": "v1alpha1",
+    "metadata": {
+        "maintainer": "ishaan@example.com",
+        "documentation_link": "./README.md",
+        "labels": {
+            "owner": "infrastructure@example.com"
+          },
+          "name": "postgres-instance",
+          "description": "A Postgres database instance."
+    },
+    "kind": "postgres",
+    "spec": {
+        "version": "16.1",
+        "architecture": {
+            "type": "standalone",
+            "size": {
+                "cpu": "1",
+                "memory": "2gi"
+            }
+        }
+    },
+    "disabled": false,
+    "flavor": {
+        "version": "1.0",
+        "name": "standard"
+    },
+    "advanced": {}
+}

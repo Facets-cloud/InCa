@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "api_version": { "type": "string" },
+      "metadata": {
+        "type": "object",
+        "properties": {
+          "maintainer": { "type": "string" },
+          "documentation_link": { "type": "string", "format": "uri" },
+          "labels": { "type": "object" },
+          "name": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "required": ["maintainer", "documentation_link", "name"]
+      },
+      "kind": { "type": "string" },
+      "spec": {
+        "type": "object",
+        "properties": {
+          "version": { "type": "string" },
+          "architecture": { "type": "string", "enum": ["standalone", "master-slave"] }
+        },
+        "required": ["version", "architecture"]
+      },
+      "disabled": { "type": "boolean" },
+      "flavor": {
+        "type": "object",
+        "properties": {
+          "version": { "type": "string" },
+          "name": { "type": "string" }
+        },
+        "required": ["version", "name"]
+      },
+      "advanced": { "type": "object" }
+    },
+    "required": ["api_version", "metadata", "kind", "spec", "disabled", "flavor"]
+}
