@@ -1,0 +1,38 @@
+{
+  "api_version": "v1alpha1",
+  "metadata": {
+    "maintainer": "rohit@example.com",
+    "documentation_link": "https://example.com/documentation",
+    "labels": {
+      "owner": "infrastructure@example.com"
+    },
+    "name": "my-mongodb-instance",
+    "description": "A MongoDB instance."
+  },
+  "kind": "mongodb",
+  "spec": {
+    "version": "6.0.2",
+    "security": {
+      "authentication": true,
+      "authorization": true,
+      "tls": true
+    },
+    "backup": {
+      "enabled": true
+    },
+    "replication": {
+      "data_instances": 3,
+      "arbiter_instances": 1
+    },
+    "parameters": {
+      "key1": "value1",
+      "key2": "value2"
+    }
+  },
+  "disabled": false,
+  "flavor": {
+    "version": "1.0",
+    "name": "standard"
+  },
+  "advanced": {}
+}

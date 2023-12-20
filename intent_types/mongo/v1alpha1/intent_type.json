@@ -1,0 +1,5 @@
+{
+  "name": "MongoDB",
+  "api_version": "v1alpha1",
+  "description": "An Intent Type for deploying and managing MongoDB, following Kubernetes style version naming."
+}
