@@ -23,12 +23,8 @@
     },
     "backup": {
       "enabled": false,
-      "frequency": "0 0 * * 7",
-      "retention": "30",
-      "storage":{
-        "type":"nfs",
-        "path":"/path/to/backups"
-      }
+      "frequency": "7",
+      "retention": "30"
     }
   },
   "disabled": false,
