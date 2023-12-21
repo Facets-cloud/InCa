@@ -20,6 +20,11 @@
       "enabled": true,
       "type": "master-slave",
       "replica_count": 2
+    },
+    "backup": {
+      "enabled": false,
+      "frequency": "7",
+      "retention": "30"
     }
   },
   "disabled": false,

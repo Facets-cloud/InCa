@@ -17,7 +17,8 @@ This intent type is designed to represent a MySQL database configuration within 
 In the `spec` object:
 - `version`: Specifies the MySQL version (e.g., `5.7`, `8.0`).
 - `server_variables`: An optional field for specifying MySQL server variables as a map of key-value pairs (e.g., `max_connections: "1000"`).
-
+- `replication`: Specifies the master-reader/master-master relation and their replication(s).
+- `backup`: Specifies the backup frequency and retention details in days.
 ## Example
 
 See the `sample.json` file for an example instance of this intent type.

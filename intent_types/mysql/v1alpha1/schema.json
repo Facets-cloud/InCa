@@ -40,6 +40,16 @@
             "enabled": {"type": "boolean"},
             "type": {"type": "string"},
             "replica_count": {"type": "integer"}
+          },
+          "backup": {
+            "type": "object",
+            "description": "Optional backup configuration for mysql server.",
+            "properties": {
+              "enabled": {"type": "boolean", "description":"set true to enable backup"}, 
+              "frequency":{"type": "number", "description":"backup frequency"}, 
+              "retention": {"type": "number","description":"Number of days the data will be persistent"}
+           
+            }
           }
         }
       }
